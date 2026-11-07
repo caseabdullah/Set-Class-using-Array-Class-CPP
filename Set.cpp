@@ -41,7 +41,7 @@ int Set::searchElementPos(int elem)
 	}
 	for (int i = 0; i < numberOfEelements; i++)
 	{
-		if (elements.data[i]==elem)
+		if (elements.getSet(i)==elem)
 		{
 			return i;
 		}
@@ -65,7 +65,7 @@ bool Set::addElement(int elem)
 	{
 		return false;
 	}
-	elements.data[numberOfEelements] = elem;
+	elements.getSet(numberOfEelements) = elem;
 	numberOfEelements++;
 	return true;
 }
@@ -77,7 +77,7 @@ bool Set::removeElement(int elem)
 	{
 		return false;
 	}
-	elements.data[pos] = elements.data[numberOfEelements - 1];
+	elements.getSet(pos) = elements.getSet(numberOfEelements - 1);
 	numberOfEelements--;
 	return true;
 }
@@ -92,7 +92,7 @@ void Set::displaySet()
 		cout << "{";
 		for (int i = 0; i < numberOfEelements; i++)
 		{
-			cout << elements.data[i] ;
+			cout << elements.getSet(i) ;
 			if (!(i==numberOfEelements-1))
 			{
 				cout << ",";
@@ -114,7 +114,7 @@ bool Set::isSubset(Set b)
 	}
 	for (int i = 0; i < numberOfEelements; i++)
 	{
-		if (!b.searchElement(elements.data[i]))
+		if (!b.searchElement(elements.getSet(i)))
 		{
 			return false;
 		}
@@ -135,7 +135,7 @@ void Set::displayCrossProduct(Set b)
 	{
 		for (int j = 0; j < b.numberOfEelements; j++)
 		{
-			cout << "(" << elements.data[i] << "," << b.elements.data[j] << ")";
+			cout << "(" << elements.getSet(i) << "," << b.elements.getSet(j) << ")";
 			if (!(i == numberOfEelements - 1&& j == b.numberOfEelements - 1))
 			{
 				cout << ",";
@@ -151,11 +151,11 @@ Set Set::calcUnion(Set b)
 
 	for (int i = 0; i < numberOfEelements; i++)
 	{
-		unionSet.addElement(elements.data[i]);
+		unionSet.addElement(elements.getSet(i));
 	}
 	for (int j = 0; j < b.numberOfEelements; j++)
 	{
-		unionSet.addElement(b.elements.data[j]);
+		unionSet.addElement(b.elements.getSet(j));
 	}
 	return unionSet;
 }
@@ -171,9 +171,9 @@ Set Set::calcIntersection(Set b)
 
 	for (int i = 0; i < numberOfEelements; i++)
 	{
-		if (b.searchElement(elements.data[i]))
+		if (b.searchElement(elements.getSet(i)))
 		{
-			intersectionSet.addElement(elements.data[i]);
+			intersectionSet.addElement(elements.getSet(i));
 		}
 	}
 	return intersectionSet;
@@ -188,9 +188,9 @@ Set Set::calcDifference(Set b)
 	}
 	for (int i = 0; i < numberOfEelements; i++)
 	{
-		if (b.isEmpty() || !b.searchElement(elements.data[i]))
+		if (b.isEmpty() || !b.searchElement(elements.getSet(i)))
 		{
-			differenceSet.addElement(elements.data[i]);
+			differenceSet.addElement(elements.getSet(i));
 		}
 	}
 	return differenceSet;

@@ -8,7 +8,7 @@ int main()
     today.addElement(12);
     today.addElement(10);
     today.addElement(18);
-    today.addElement(14);
+    today.addElement(1);
     today.addElement(20);
     //today.removeElement(20);
     today.displaySet();

@@ -3,9 +3,9 @@
 
 class Array
 {
-public:
 	int* data;
 	int capacity;
+public:
 	bool isValidIndex(int index);
 	Array(int = 0);
 	~Array();
